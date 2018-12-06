@@ -26,6 +26,14 @@ var getProbability = function(x, y) {
 	return probability[pos[0]][pos[1]]
 }
 
+var getProb = function(x, y) {
+	return probability[x][y]
+}
+
+var setProb = function(x, y, val) {
+	probability[x][y] = val
+}
+
 var radPro = 45 / 57.296
 var getProbabilityAhead = function(car) {
 

@@ -48,22 +48,24 @@ function setBlock(...arrBlock) {
 	}
 }
 
-function drawAWall(x0, y0, x, y) {
-	let id = "wall"+x+""+y;
-	let div = "<div id=\""+id+"\" class=\"wall\">";
-	// $("#map").append(div);
-	// $("#"+id).css({
-	// 	'top': x0 + x*wallSize,
-	// 	'left': x0 + y*wallSize,
-	// })
-	$("#cell" + (x * mapSizeX + y)).css({"background-color" : "black"})
+function drawAWall(x, y, bool) {
+	if(bool) {
+		$("#cell" + (x * mapSizeX + y)).css({"background-color" : "black"})
+	} else {
+		$("#cell" + (x * mapSizeX + y)).css({"background-color" : "white"})
+	}
 }
 function drawAllWall() {
-	console.log(arrWall);
-	for(let i= 0; i < arrWall.length; i++){
-		drawAWall(-wallSize, -wallSize, arrWall[i][0], arrWall[i][1]);
+	console.log("draw All Wall");
+	for( let i = 1; i <= mapSizeX; i++){
+		for( let j = 1; j <= mapSizeY; j++){
+			if(getProb(i-1,j-1) == 0){
+				drawAWall(i, j, true)
+			} else {
+				drawAWall(i, j, false)
+			}
+		}
 	}
-	logParam(map)
 }
 function getCell(x, y) {
 	return [Math.floor((x + xOffsetCar) / wallSize),
@@ -86,26 +88,37 @@ function checkCellSensor(x, y) {
 }
 
 
-
-
-
 var mapEditable = false
 var editMap = function function_name() {
 	logParam('editMap')
-	if(mapEditable) {
-		for( let i = 1; i <= mapSizeX; i++){
-			for( let j = 1; j <= mapSizeY; j++){
+	for( let i = 1; i <= mapSizeX; i++){
+		for( let j = 1; j <= mapSizeY; j++){
+			if(mapEditable) {
+				let value = parseInt($("#input" + (i * mapSizeX + j)).val())
+				if(getProb(i-1, j-1) == 0 && 0 != value){
+					map[i][j] = true;
+				} else if(getProb(i-1, j-1) != 0 && value == 0) {
+					map[i][j] = false;
+				}
+				setProb(i-1, j-1, value)
 				$("#input" + (i * mapSizeX + j)).css({"display": "none"})
-			}
-		}
-	} else {
-		for( let i = 1; i <= mapSizeX; i++){
-			for( let j = 1; j <= mapSizeY; j++){
-				$("#input" + (i * mapSizeX + j)).value = 5
-				$("#input" + (i * mapSizeX + j)).css({"display": "block"})
+			} else {
+				// logParam(i, j, getProbability(i, j))
+				point = getProb(i-1, j-1)
+				define = (255 - Math.min(Math.trunc(255*point/finishPoint), 255)).toString(16)
+				while( define.length < 2 ){
+					define = '0' + define
+				}
+				color = "#"+define+"0fff"
+				if( point == 0 )
+					color = "#ffffff"
+				// logParam(i, j, color)
+				$("#input" + (i * mapSizeX + j)).val(getProb(i-1, j-1))
+				$("#input" + (i * mapSizeX + j)).css({"display": "block", "background-color": color})
 			}
 		}
 	}
+	drawAllWall()
 	mapEditable = !mapEditable
 }
 

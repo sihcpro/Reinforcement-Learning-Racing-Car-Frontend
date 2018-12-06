@@ -4,6 +4,8 @@ var logParam = function(...content){
 		return
 	console.log(...content)
 }
+var print = logParam
+
 var logg = function(car){
 	// $('#log').html('X: ' + car.x + ' Y: ' + car.y + ' Rad: ' + Math.round((car.rad * 180 / 3.1415926535 + 180) % 360) + '<br />Move' + move);
 	$('#status'+car.id).html(`
