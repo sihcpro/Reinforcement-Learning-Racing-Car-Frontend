@@ -1,0 +1,70 @@
+<html>
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="index.css">
+		<script src="index.js"></script>
+	</head>
+	<body>
+		<div id="field">
+			<span id="car">
+				<span id="car0">
+					<div id="draw-car0" class="car"></div>
+				</span>
+			</span>
+			<table id="map" style="border-collapse: collapse;">
+			</table>
+			<button id="editMapButton" onclick="editMap()">Edit map</button>
+		</div>
+		<div id="server">
+			<button id="addServer" onclick="addServer()">Add server</button>
+			<div id="server0" class="server">
+				<div id="color0" class="color"></div>
+				<div id="status0" class="status"></div>
+				<table class="button">
+					<tr>
+						<td>link</td>
+						<td>
+							<input type="text" name="link" id="link0" value="http://0.0.0.0:5000/" style="width: 194px">
+						</td>
+					</tr>
+					<tr>
+						<td>name</td>
+						<td>
+							<input type="text" name="car_name" id="car_name0" value="car1" style="width: 100px">
+							<button id="connect0" onclick="sendRequestConnect(0)" style="width: 90px">Connect</button>
+						</td>
+					</tr>
+					<tr class="connected0" id="main-control0" style="display: none">
+						<td></td>
+						<td>
+							<button id="train0" onclick="sendGetTrain(0)">Train</button>
+							<button id="load0" onclick="getLoadFunc(0)">Load</button>
+						</td>
+					</tr>
+					<tr class="connected0" id="train-control0" style="display: none">
+						<td></td>
+						<td>
+							<button id="pause0" onclick="pauseFunc(0)">Pause</button>
+							<button id="save0" onclick="saveFunc(0)">Save</button>
+						</td>
+					</tr>
+					<!-- <button id="relearn">Relearn</button> -->
+				</table>
+				<span class="connected0" id="load-control0" style="display: none">
+					<div id="load-link0" class="load-link"></div>
+				</span>
+			</div>
+		</div>
+		<script src="js/connect.js"></script>
+		<script src="js/map.js"></script>
+		<script src="js/probability.js"></script>
+		<script src="js/car.js"></script>
+		<script src="js/sensor.js"></script>
+		<script src="js/control.js"></script>
+		<script type="text/javascript">
+
+
+		</script>
+		<script src="js/main.js"></script>
+	</body>
+</html>

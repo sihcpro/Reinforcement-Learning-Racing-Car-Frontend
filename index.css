@@ -1,0 +1,114 @@
+body {
+	background-color: pink;
+	display: grid;
+	grid-template-columns: min-content auto;
+}
+
+
+
+.wall{
+	height: 30px;
+	width: 30px;
+	background-color: black;
+	position: absolute;
+}
+.server{
+	border: 1px solid black;
+	height: 85px;
+}
+.button {
+	display: inline-block;
+	padding: 5px;
+}
+
+.sensor{
+	height: 3px;
+	width: 3px;
+	background-color: green;
+	position: absolute;
+}
+
+#field {
+	width: 600px;
+	height: 600px;
+	border: 1px solid black;
+	position: relative;
+	display: inline-block;
+}
+
+.car {
+	position: absolute;
+	width: 0;
+	height: 0;
+	z-index: 100;
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+}
+#draw-car0 {
+	border-bottom: 10px solid blue;
+}
+#draw-car1 {
+	border-bottom: 10px solid red;
+}
+#draw-car2 {
+	border-bottom: 10px solid aqua;
+}
+#draw-car3 {
+	border-bottom: 10px solid black;
+}
+#draw-car4 {
+	border-bottom: 10px solid green;
+}
+#draw-car5 {
+	border-bottom: 10px solid gray;
+}
+#draw-car6 {
+	border-bottom: 10px solid purple;
+}
+
+
+.color {
+	float: left;
+	width: 20px;
+	height: 100%;
+}
+#color0 {
+	background-color: blue;
+}
+#color1 {
+	background-color: red;
+}
+#color2 {
+	background-color: aqua;
+}
+#color3 {
+	background-color: black;
+}
+#color4 {
+	background-color: green;
+}
+#color5 {
+	background-color: gray;
+}
+#color6 {
+	background-color: purple;
+}
+
+.load-link{
+	margin-left: 8px;
+}
+
+.status{
+	float: right;
+	height: 100%;
+}
+.status > table > tbody > tr > td {
+	width: 100px;
+}
+
+.cell {
+	background-color: white;
+	width: 30px;
+	height: 30px;
+	padding: 0px;
+}
